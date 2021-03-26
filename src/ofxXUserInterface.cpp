@@ -35,9 +35,9 @@ shared_ptr<XButton> ofxXUserInterface::addButton(glm::vec2 pos, glm::vec2 size)
 	return btn;
 }
 
-shared_ptr<XSlider> ofxXUserInterface::addSlider(glm::vec2 pos, glm::vec2 size)
+shared_ptr<XSlider> ofxXUserInterface::addSlider(glm::vec2 pos, glm::vec2 size, float * p, float _min, float _max )
 {
-	shared_ptr<XSlider> slider = make_shared<XSlider>(pos, size);
+	shared_ptr<XSlider> slider = make_shared<XSlider>(pos, size, p, _min, _max );
 
 	elementList.push_back( slider );
 
@@ -47,6 +47,12 @@ shared_ptr<XSlider> ofxXUserInterface::addSlider(glm::vec2 pos, glm::vec2 size)
 void ofxXUserInterface::toggleVisible()
 {
 	visible = !visible;
+
+	for (auto e : elementList)
+	{
+		e->setVisible( visible );
+	}
+
 }
 
 void ofxXUserInterface::keyPressed(ofKeyEventArgs & args)
@@ -60,4 +66,21 @@ void ofxXUserInterface::keyPressed(ofKeyEventArgs & args)
 void ofxXUserInterface::keyReleased(ofKeyEventArgs & args)
 {
 
+}
+
+bool ofxXUserInterface::isTouched()
+{
+	touched = false;
+
+	// if mouse is being pressed then check if any elements have been clicked
+	if (ofGetMousePressed())
+	{
+		for (auto e : elementList)
+		{
+			if (e->isTouched())
+				touched = true;
+		}
+	}
+	// If the gui is not visible then it is not being touched
+	return ( touched && visible );
 }

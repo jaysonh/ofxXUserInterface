@@ -44,12 +44,14 @@ void XButton::mousePressed(ofMouseEventArgs & args)
 	{
 		if (boundBox.inside(args.x, args.y))
 		{
-			pressed = true;   
+			pressed = true;  
+			touched = true;
 			ofNotifyEvent(pressedEvt, args.button);
 		}
 		else
 		{
 			pressed = false;
+			touched = false;
 		}
 	}
 }
@@ -59,5 +61,6 @@ void XButton::mouseReleased(ofMouseEventArgs & args)
 	if (visible)
 	{
 		pressed = false;
+		touched = false;
 	}
 }

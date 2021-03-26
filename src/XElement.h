@@ -9,6 +9,10 @@ public:
 	~XElement();
 
 	void update();
+	bool isTouched();
+
+	void setVisible( const bool _visible );
+
 	virtual void draw() =0;
 
 	virtual void keyPressed  (ofKeyEventArgs & args) = 0;
@@ -28,6 +32,7 @@ protected:
 	glm::vec2   size;
 	bool        visible = false;
 	ofRectangle boundBox;
+	bool		touched = false;
 private:
 
 };

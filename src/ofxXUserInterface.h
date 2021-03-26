@@ -21,12 +21,14 @@ public:
 	void keyPressed (ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
 
+	bool isTouched();
+
 	shared_ptr < XButton > addButton( glm::vec2 pos, glm::vec2 size );
-	shared_ptr < XSlider > addSlider( glm::vec2 pos, glm::vec2 size );
+	shared_ptr < XSlider > addSlider( glm::vec2 pos, glm::vec2 size, float * p, float _min= 0.0, float _max =1.0 );
 
 private:
 
 	bool visible = DEFAULT_VISIBLE_STATUS;
-
+	bool touched = false;
 	vector < shared_ptr< XElement > > elementList;
 };
