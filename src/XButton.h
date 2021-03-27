@@ -2,12 +2,13 @@
 
 #include "ofMain.h"
 #include "XElement.h"
+#include "XButtonSkin.h"
 
 class XButton : public XElement
 {
 public:
 	XButton();
-	XButton( glm::vec2 _pos, glm::vec2 _size );
+	XButton( glm::vec2 _pos, glm::vec2 _size, string _name );
 	~XButton();
 
 	void draw();
@@ -16,10 +17,12 @@ public:
 
 	void mousePressed (ofMouseEventArgs & args);
 	void mouseReleased(ofMouseEventArgs & args);
+	void mouseMoved(ofMouseEventArgs & args);
+
+	void addSkin(XButtonSkin * _skin);
 
 	// Unused mouse functions
 	void mouseDragged (ofMouseEventArgs & args){}
-	void mouseMoved   (ofMouseEventArgs & args){}
 	void mouseScrolled(ofMouseEventArgs & args){}
 	void mouseEntered (ofMouseEventArgs & args){}
 	void mouseExited  (ofMouseEventArgs & args){}
@@ -29,6 +32,8 @@ public:
 
 private:
 
-	bool pressed = false;
-
+	bool pressed   = false;
+	bool mouseOver = false;
+	XButtonSkin * skin;
+	bool useSkin = false;
 };

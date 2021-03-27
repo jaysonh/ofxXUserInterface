@@ -28,6 +28,7 @@ public:
 	
 protected:
 
+	string      name;
 	glm::vec2   pos;
 	glm::vec2   size;
 	bool        visible = false;

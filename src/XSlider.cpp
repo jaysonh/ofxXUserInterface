@@ -5,10 +5,12 @@
 	value = ofParameter<float>();
 }*/
 
-XSlider::XSlider( glm::vec2 _pos, glm::vec2 _size, float * _p,float _minValue, float _maxValue)
+XSlider::XSlider( glm::vec2 _pos, glm::vec2 _size, string _name, float * _p,float _minValue, float _maxValue)
 {
 	pos  = _pos;
 	size = _size;
+
+	name = _name;
 
 	value = _p;
 
@@ -101,7 +103,7 @@ float XSlider::getValue()
 void XSlider::addSkin(XSliderSkin * _skin)
 {
 	skin = _skin;
-
-	skin->init( pos, size );
+	
+	skin->init( pos, size, name );
 	useSkin = true;
 }

@@ -16,6 +16,9 @@ public:
 	void draw();
 	void update();
 
+	void saveSettings( int & v );
+	void loadSettings( int & v );
+
 	void toggleVisible();
 
 	void keyPressed (ofKeyEventArgs & args);
@@ -23,8 +26,8 @@ public:
 
 	bool isTouched();
 
-	shared_ptr < XButton > addButton( glm::vec2 pos, glm::vec2 size );
-	shared_ptr < XSlider > addSlider( glm::vec2 pos, glm::vec2 size, float * p, float _min= 0.0, float _max =1.0 );
+	shared_ptr < XButton > addButton( glm::vec2 pos, glm::vec2 size, string _name );
+	shared_ptr < XSlider > addSlider( glm::vec2 pos, glm::vec2 size, string _name, float * p, float _min= 0.0, float _max =1.0 );
 
 private:
 

@@ -26,18 +26,18 @@ void ofxXUserInterface::update()
 
 }
 
-shared_ptr<XButton> ofxXUserInterface::addButton(glm::vec2 pos, glm::vec2 size)
+shared_ptr<XButton> ofxXUserInterface::addButton(glm::vec2 pos, glm::vec2 size, string _name)
 {
-	shared_ptr<XButton> btn = make_shared<XButton>( pos, size );
+	shared_ptr<XButton> btn = make_shared<XButton>( pos, size, _name );
 
 	elementList.push_back(btn);
 
 	return btn;
 }
 
-shared_ptr<XSlider> ofxXUserInterface::addSlider(glm::vec2 pos, glm::vec2 size, float * p, float _min, float _max )
+shared_ptr<XSlider> ofxXUserInterface::addSlider(glm::vec2 pos, glm::vec2 size, string _name, float * p, float _min, float _max )
 {
-	shared_ptr<XSlider> slider = make_shared<XSlider>(pos, size, p, _min, _max );
+	shared_ptr<XSlider> slider = make_shared<XSlider>(pos, size, _name, p, _min, _max );
 
 	elementList.push_back( slider );
 
@@ -83,4 +83,14 @@ bool ofxXUserInterface::isTouched()
 	}
 	// If the gui is not visible then it is not being touched
 	return ( touched && visible );
+}
+
+
+void ofxXUserInterface::saveSettings(int & v)
+{
+	cout << "saving" << endl;
+}
+void ofxXUserInterface::loadSettings(int & v)
+{
+	cout << "loading" << endl;
 }

@@ -4,10 +4,11 @@ XButton::XButton()
 {
 }
 
-XButton::XButton(glm::vec2 _pos, glm::vec2 _size)
+XButton::XButton(glm::vec2 _pos, glm::vec2 _size, string _name)
 {
 	pos  = _pos;
 	size = _size; 
+	name = _name;
 
 	boundBox = ofRectangle(pos.x, pos.y, size.x, size.y);
 
@@ -21,12 +22,19 @@ XButton::~XButton()
 
 void XButton::draw()
 {
-	if (pressed)
-		ofSetColor(ofColor::green);
+	if (useSkin)
+	{
+		skin->draw();
+	}
 	else
-		ofSetColor(ofColor::blue);
+	{
+		if (pressed)
+			ofSetColor(ofColor::green);
+		else
+			ofSetColor(ofColor::blue);
 
-	ofDrawRectangle(pos.x, pos.y, size.x, size.y);
+		ofDrawRectangle(pos.x, pos.y, size.x, size.y);
+	}
 }
 
 void XButton::keyPressed(ofKeyEventArgs & args)
@@ -63,4 +71,19 @@ void XButton::mouseReleased(ofMouseEventArgs & args)
 		pressed = false;
 		touched = false;
 	}
+}
+
+void XButton::mouseMoved(ofMouseEventArgs & args)
+{
+	mouseOver = boundBox.inside(args.x, args.y);
+
+	skin->setMouseOver( mouseOver );
+}
+
+void XButton::addSkin(XButtonSkin * _skin)
+{
+	skin = _skin;
+
+	skin->init(pos, size, name);
+	useSkin = true;
 }

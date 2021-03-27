@@ -10,7 +10,8 @@ public:
 	//XSlider();
 	XSlider( glm::vec2            _pos, 
 			 glm::vec2            _size,
-			 float *   _p,
+			 string               _name,
+			 float *			  _p,
 			 float                _minValue = 0.0f, 
 			 float                _maxValue = 1.0f  );
 	~XSlider();
@@ -38,8 +39,9 @@ public:
 	void mouseExited  (ofMouseEventArgs & args) {}
 
 private:
+	void updateValue(float _x);
+
 	float * value;
-	void updateValue( float _x );
 	XSliderSkin * skin;
 	bool useSkin = false;
 	float minValue, maxValue;
