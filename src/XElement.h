@@ -13,6 +13,8 @@ public:
 
 	void setVisible( const bool _visible );
 
+	void setGlobalPos( const glm::vec2 _p );
+
 	virtual void draw() =0;
 
 	virtual void keyPressed  (ofKeyEventArgs & args) = 0;
@@ -30,6 +32,7 @@ protected:
 
 	string      name;
 	glm::vec2   pos;
+	glm::vec2   globalPos;
 	glm::vec2   size;
 	bool        visible = false;
 	ofRectangle boundBox;

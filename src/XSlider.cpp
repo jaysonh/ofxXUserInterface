@@ -82,7 +82,7 @@ void XSlider::mousePressed(ofMouseEventArgs & args)
 
 void XSlider::updateValue(float _x)
 {
-	pctVal = ofMap(_x, pos.x, pos.x + size.x, minValue, maxValue, true);
+	pctVal = ofMap(_x, pos.x + globalPos.x, pos.x + size.x + globalPos.x, 0.0, 1.0, true);
 	
 	if ( _x == pos.x + 1          ) pctVal = 0.0;
 	if ( _x == pos.x + size.x - 1 ) pctVal = 1.0;

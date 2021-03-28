@@ -14,10 +14,13 @@ void ofxXUserInterface::draw()
 {
 	if (visible)
 	{
+		ofPushMatrix();
+		ofTranslate(pos.x, pos.y);
 		for (auto e : elementList)
 		{
 			e->draw();
 		}
+		ofPopMatrix();
 	}
 }
 
@@ -93,4 +96,15 @@ void ofxXUserInterface::saveSettings(int & v)
 void ofxXUserInterface::loadSettings(int & v)
 {
 	cout << "loading" << endl;
+
+}
+void ofxXUserInterface::setPosition(glm::vec2 _p)
+{
+	pos = _p;
+
+
+	for (auto e : elementList)
+	{
+		e->setGlobalPos( pos );
+	}
 }
