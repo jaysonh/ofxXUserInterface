@@ -90,13 +90,28 @@ bool ofxXUserInterface::isTouched()
 
 
 void ofxXUserInterface::saveSettings(int & v)
-{
-	cout << "saving" << endl;
+{ 
+	ofJson json;
+
+	json["numElements"] = elementList.size();
+
+	int i = 0;
+	for (auto e : elementList)
+	{
+		json[ofToString(i++)] = e->getJson();
+	}
+
+	ofSaveJson(jsonOutputFile, json);
 }
 void ofxXUserInterface::loadSettings(int & v)
-{
-	cout << "loading" << endl;
+{ 
+	ofJson json = ofLoadJson(jsonOutputFile);
 
+	int numElements = json["numElements"];
+	for (int i = 0; i < numElements; i++)
+	{
+		elementList[i]->setJson(json[ofToString(i)]);
+	}
 }
 void ofxXUserInterface::setPosition(glm::vec2 _p)
 {

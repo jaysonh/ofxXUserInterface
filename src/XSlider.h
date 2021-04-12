@@ -17,6 +17,8 @@ public:
 	~XSlider();
 
 	void draw();
+	ofJson getJson();
+	void   setJson(ofJson json);
 
 	void keyPressed (ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);

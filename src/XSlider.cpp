@@ -107,3 +107,21 @@ void XSlider::addSkin(XSliderSkin * _skin)
 	skin->init( pos, size, name );
 	useSkin = true;
 }
+
+void   XSlider::setJson(ofJson json)
+{
+	pctVal = json["value"];
+	*value = ofMap(pctVal, 0, 1.0, minValue, maxValue);
+
+	if (useSkin)
+		skin->setValue(pctVal);
+}
+ofJson XSlider::getJson()
+{
+	ofJson json;
+	
+	json[ "type"  ] = "slider";
+	json[ "value" ] = pctVal;
+
+	return json;
+}

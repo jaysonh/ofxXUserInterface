@@ -87,3 +87,14 @@ void XButton::addSkin(XButtonSkin * _skin)
 	skin->init(pos, size, name);
 	useSkin = true;
 }
+ofJson XButton::getJson()
+{
+	ofJson json;
+
+	
+	return json;
+}
+ void   XButton::setJson(ofJson json)
+{
+
+}

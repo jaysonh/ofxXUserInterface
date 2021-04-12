@@ -33,6 +33,8 @@ public:
 
 private:
 
+	const string jsonOutputFile = "settings.json";
+
 	bool visible = DEFAULT_VISIBLE_STATUS;
 	bool touched = false;
 	vector < shared_ptr< XElement > > elementList;

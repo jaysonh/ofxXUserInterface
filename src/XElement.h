@@ -15,7 +15,9 @@ public:
 
 	void setGlobalPos( const glm::vec2 _p );
 
-	virtual void draw() =0;
+	virtual void   draw   () = 0;
+	virtual ofJson getJson() = 0;
+	virtual void   setJson(ofJson json) = 0;
 
 	virtual void keyPressed  (ofKeyEventArgs & args) = 0;
 	virtual void keyReleased (ofKeyEventArgs & args) = 0;

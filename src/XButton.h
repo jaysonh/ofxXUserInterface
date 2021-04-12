@@ -29,6 +29,8 @@ public:
 
 	// public event handlers
 	ofEvent <int> pressedEvt;
+	ofJson getJson();
+	void   setJson(ofJson json);
 
 private:
 
